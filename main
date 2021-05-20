@@ -1,0 +1,28 @@
+import java.util.*;
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        givenGreetingClient_whenServerRespondsWhenStarted_thenCorrect();
+    }
+
+    public static void givenGreetingClient_whenServerRespondsWhenStarted_thenCorrect() {
+        TcpClient client = new TcpClient();
+        client.startConnection("127.0.0.1", 6666);
+
+
+
+        Scanner sc= new Scanner(System.in); //System.in is a standard input stream.
+        while(true){
+            System.out.print("Enter a string: ");
+            String str= sc.nextLine();
+            String response = client.sendMessage(str);
+            System.out.println(response);
+        }
+
+
+    }
+}
